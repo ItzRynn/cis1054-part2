@@ -1,0 +1,264 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Title */
+.title {
+    font-size: 4em;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* Header */
+header {
+    background-color: #343a40;
+    padding: 20px 0;
+    text-align: center;
+    justify-content: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em; 
+    margin: 0 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Form */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="password"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f1f3f5;
+    color: #495057;
+}
+
+form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+    font-size: 3em;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 1.8em;
+}
+
+/* Menu */
+.menu {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu li:hover {
+    transform: translateY(-5px);
+}
+
+.menu a {
+    color: #343a40;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button */
+.dropbtn {
+    background-color: #2a2a2a;
+    color: white;
+    padding: 16px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.panels {
+    display: flex;
+    justify-content: center; /* Centers the child elements horizontally */
+    align-items: center; /* Centers the child elements vertically */
+    flex-wrap: wrap; /* Allows the child elements to wrap to the next line if necessary */
+    text-align: center; /* Ensures text inside the panels is centered */
+    gap: 20px; /* Optional: Adds space between the child elements */
+}
+
+.worker {
+    display: flex;
+    flex-direction: column; /* Arranges child elements in a column */
+    align-items: center; /* Centers the child elements horizontally */
+    text-align: center; /* Ensures text inside each worker panel is centered */
+}
+
+.worker img {
+    margin-bottom: 10px; /* Adds space between the image and the text */
+}
+
+/* Centering the infocategories */
+.infocategories {
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text inside */
+}
+
+.infocategoriesmid {
+    margin-top: 10px; /* Add margin between sections */
+}
+
+/* Centering the panels */
+.panels {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Add space between panels */
+}
+
+.worker {
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text inside */
+}
+
+.worker img {
+    margin-bottom: 10px; /* Add space between image and text */
+}
+
+.headers {
+    text-align: center; /* Center text inside headers */
+}
