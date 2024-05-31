@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Category</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h2>Add New Category</h2>
+    <form method="post" action="add_category.php">
+        <label for="category_name">Category Name:</label>
+        <input type="text" id="category_name" name="category_name" required>
+        <br>
+        <input type="submit" value="Add Category">
+    </form>
+    <?php if ($error): ?>
+        <p><?php echo $error; ?></p>
+    <?php endif; ?>
+</body>
+</html>

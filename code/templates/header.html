@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Burgers</title>
+</head>
+<body>
+    <h1>Royal Burgers</h1>
+    <header>
+        <a href="index.php">Home</a>
+        <a href="favorites.php">View Favorites</a>
+        <a href="information.php">About us</a>
+        <div class="dropdown">
+            <button class="dropbtn">Contact Us</button>
+            <div class="dropdown-content">
+                <a href="booking.php">Book a Table</a>
+                <a href="query.php">Send a Query</a>
+                <a href="complaint.php?id=>">File a Complaint</a>
+            </div>
+        </div>
+        <?php
+        if(basename($_SERVER['PHP_SELF']) === 'admin.php') {
+            echo '
+            <div class="dropdown">
+                <button class="dropbtn">Admin</button>
+                <div class="dropdown-content">
+                    <a href="add_dish.php">Add New Dish</a>
+                    <a href="add_category.php">Add New Category</a>
+                    <a href="delete_category.php?id=>">Delete Category</a>
+                    <a href="admin_resolve_queries.php">Manage Queries</a></li>
+                    <a href="admin_resolve_complaints.php">Manage Complaints</a></li>
+                    <a href="admin_confirm_booking.php">Manage Bookings</a></li>
+                    <a href="logout.php">Logout</a>
+                </div>
+            </div>';
+        }
+        ?>
+    </header>
+</body>
+</html>

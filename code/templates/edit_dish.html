@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Dish</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h2>Edit Dish</h2>
+    <form method="post" action="edit_dish.php" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $dish['id']; ?>">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($dish['name']); ?>" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required><?php echo htmlspecialchars($dish['description']); ?></textarea>
+        <br>
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" value="<?php echo htmlspecialchars($dish['price']); ?>" required>
+        <br>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+        <?php if (!empty($dish['image'])): ?>
+            <img src="<?php echo htmlspecialchars($dish['image']); ?>" alt="<?php echo htmlspecialchars($dish['name']); ?>" width="150">
+        <?php endif; ?>
+        <br>
+        <label for="category_id">Category:</label>
+        <select id="category_id" name="category_id" required>
+            <?php foreach ($categories as $category) : ?>
+                <option value="<?php echo $category['id']; ?>" <?php if ($category['id'] == $dish['category_id']) echo 'selected'; ?>>
+                    <?php echo htmlspecialchars($category['name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <br>
+        <input type="submit" value="Edit Dish">
+    </form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?php echo htmlspecialchars($category['name']); ?></title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .dish {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            margin: 10px;
+            padding: 20px;
+            width: calc(33.333% - 20px); /* Three dishes per row */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .dish h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .dish img {
+            width: 100%; /* Ensure image takes up full width of container */
+            height: 200px; /* Fixed height */
+            object-fit: cover; /* Maintain aspect ratio and cover the area */
+            margin-bottom: 10px;
+        }
+        .dish p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        @media (max-width: 768px) {
+            .dish {
+                width: calc(50% - 20px); /* Two dishes per row for smaller screens */
+            }
+        }
+        @media (max-width: 480px) {
+            .dish {
+                width: 100%; /* One dish per row for mobile screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2><?php echo htmlspecialchars($category['name']); ?></h2>
+    <div class="menu">
+        <?php foreach ($dishes as $dish): ?>
+            <div class="dish">
+                <h3><a href="dish.php?id=<?php echo htmlspecialchars($dish['id']); ?>"><?php echo htmlspecialchars($dish['name']); ?></a></h3>
+                <?php if (!empty($dish['image'])): ?>
+                    <img src="<?php echo htmlspecialchars($dish['image']); ?>" alt="<?php echo htmlspecialchars($dish['name']); ?>">
+                <?php else: ?>
+                    <p>No image available</p>
+                <?php endif; ?>
+                <p>Price: €<?php echo number_format((float)$dish['price'], 2, '.', ''); ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</body>
+</html>

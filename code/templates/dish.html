@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Dish</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .dish-details {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center align content */
+        }
+        .dish-details img {
+            width: 100%; /* Ensure image takes up full width of container */
+            height: auto;
+            object-fit: cover; /* Maintain aspect ratio and cover the area */
+            margin-bottom: 10px;
+        }
+        .dish-details h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .dish-details p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .favorite-btn {
+            margin-top: 10px; /* Add some space between dish information and favorite button */
+            cursor: pointer;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            background-color: black;
+        }
+        .favorite {
+            background-color: red; /* Change background color for favorite dishes */
+        }
+    </style>
+</head>
+<body>
+    <div class="dish-details">
+        <h2><?php echo htmlspecialchars($dish['name']); ?></h2>
+        <?php if (!empty($dish['image'])): ?>
+            <img src="<?php echo htmlspecialchars($dish['image']); ?>" alt="<?php echo htmlspecialchars($dish['name']); ?>">
+        <?php else: ?>
+            <p>No image available</p>
+        <?php endif; ?>
+        <p><strong>ID:</strong> <?php echo htmlspecialchars($dish_id); ?></p>
+        <p><strong>Price:</strong> €<?php echo number_format((float)$dish['price'], 2, '.', ''); ?></p>
+        <p><strong>Description:</strong> <?php echo htmlspecialchars($dish['description']); ?></p>
+        <p><strong>Category:</strong> <?php echo htmlspecialchars($dish['category_name']); ?></p>
+        <form method="post" action="">
+            <?php if ($isFavorite): ?>
+                <input type="hidden" name="remove_from_favorites" value="1">
+                <button type="submit" class="favorite-btn favorite">&#9733; Remove from Favorites</button>
+            <?php else: ?>
+                <input type="hidden" name="add_to_favorites" value="1">
+                <button type="submit" class="favorite-btn">&#9733; Add to Favorites</button>
+            <?php endif; ?>
+        </form>
+    </div>
+</body>
+</html>

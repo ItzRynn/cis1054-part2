@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script>
+        $(function() {
+            $("#sortable").sortable({
+                update: function(event, ui) {
+                    var order = $(this).sortable('toArray');
+                    $.post("update_order.php", {order: order});
+                }
+            });
+            $("#sortable").disableSelection();
+        });
+    </script>
+</head>
+<body>
+    <h2>Admin Dashboard</h2>
+    <div class="menu">
+        <ul id="sortable">
+            <?php foreach ($menu as $category): ?>
+                <li id="category-<?php echo htmlspecialchars($category['id']); ?>">
+                    <h3><?php echo htmlspecialchars($category['name']); ?></h3>
+                    <ul>
+                        <?php foreach ($category['dishes'] as $dish): ?>
+                            <li>
+                                <?php echo htmlspecialchars($dish['name']); ?>
+                                - €<?php echo number_format((float)$dish['price'], 2, '.', ''); ?>
+                                <?php if ($_SESSION['role'] === 'admin'): ?>
+                                    &nbsp;<a href="edit_dish.php?id=<?php echo htmlspecialchars($dish['id']); ?>">Edit</a>
+                                    &nbsp;<a href="delete_dish.php?id=<?php echo htmlspecialchars($dish['id']); ?>">Delete</a>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</body>
+</html>

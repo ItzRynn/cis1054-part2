@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favorites</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .favorites-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .dish-details {
+            flex: 0 0 calc(33.33% - 20px);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        @media screen and (max-width: 768px) {
+            .dish-details {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .dish-details {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+        .favorite-btn.favorite {
+            background-color: red;
+        }
+        .email-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Favorite Dishes</h2>
+
+    <!-- Email Form -->
+    <div class="email-form">
+        <form method="post" action="">
+            <label for="email">Send your favorites to an email:</label>
+            <input type="email" name="email" id="email" required>
+            <button type="submit" name="send_email">Send</button>
+        </form>
+    </div>
+
+    <div class="favorites-container">
+        <?php foreach ($favoriteDishes as $dish): ?>
+            <div class="dish-details">
+                <h2><?php echo htmlspecialchars($dish['name']); ?></h2>
+                <?php if (!empty($dish['image'])): ?>
+                    <img src="<?php echo htmlspecialchars($dish['image']); ?>" alt="<?php echo htmlspecialchars($dish['name']); ?>">
+                <?php else: ?>
+                    <p>No image available</p>
+                <?php endif; ?>
+                <p><strong>ID:</strong> <?php echo htmlspecialchars($dish['id']); ?></p>
+                <p><strong>Price:</strong> €<?php echo number_format((float)$dish['price'], 2, '.', ''); ?></p>
+                <p><strong>Description:</strong> <?php echo htmlspecialchars($dish['description']); ?></p>
+                <p><strong>Category:</strong> <?php echo htmlspecialchars($dish['category_name']); ?></p>
+                <form method="post" action="">
+                    <input type="hidden" name="remove_id" value="<?php echo htmlspecialchars($dish['id']); ?>">
+                    <input type="hidden" name="remove_from_favorites" value="1">
+                    <button type="submit" class="favorite-btn<?php if ($isFavorite) echo ' favorite'; ?>">
+                        &#9733; Remove from Favorites
+                    </button>
+                </form>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</body>
+</html>
